@@ -71,7 +71,7 @@
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; width:100%; overflow-x:hidden; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; width:100%; min-width:100%; overflow-x:hidden; }
 
 body {
   background: var(--bg);
@@ -79,6 +79,7 @@ body {
   font-family: var(--font-body);
   font-size: 16px;
   line-height: 1.6;
+  min-width:100%;
   overflow-x: hidden;
 }
 
@@ -157,7 +158,7 @@ img, picture, video, iframe, svg { max-width: 100%; height: auto; display: block
 
 /* ── SECTIONS ── */
 .wrap { max-width: var(--max-w); margin: 0 auto; padding: 0 2rem; }
-section { padding: 7rem 0; }
+section { padding: 7rem 0; overflow-x: hidden; }
 .label { font-size: 0.72rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--green); margin-bottom: 1rem; }
 .section-title { font-family: var(--font-display); font-size: clamp(2rem, 4.5vw, 3.2rem); font-weight: 400; line-height: 1.15; letter-spacing: -0.01em; margin-bottom: 0.75rem; }
 .section-title em { font-style: italic; color: var(--green); }
@@ -266,6 +267,7 @@ section { padding: 7rem 0; }
 .an-table-row .link-count { color: var(--green); font-weight: 600; }
 .an-table-row .link-bar { flex: 1; margin: 0 0.75rem; height: 4px; background: var(--bg); border-radius: 2px; }
 .an-table-row .link-fill { height: 100%; background: var(--green-dim); border-radius: 2px; }
+.analytics-highlight { display: inline-block; color: var(--green); background: rgba(0,204,111,0.08); border-radius: 12px; padding: 0.45rem 0.9rem; font-weight: 700; }
 
 /* ── QR ADD-ONS ── */
 .addons-section { border-top: 1px solid var(--border); }
@@ -337,7 +339,9 @@ section { padding: 7rem 0; }
 }
 
 @media (max-width: 640px) {
+  html, body, section { overflow-x: hidden; }
   .nav { padding: 0 1.25rem; }
+  .nav-inner { width: 100%; }
   .nav-links a:not(.nav-cta) { display: none; }
   .wrap { padding: 0 1.25rem; }
   section { padding: 5rem 0; }
@@ -566,7 +570,7 @@ section { padding: 7rem 0; }
         <p class="label">Analytics dashboard</p>
         <h2 class="section-title">Real data, <em>not assumptions</em></h2>
         <p class="section-desc" style="margin-bottom:1.5rem;">Table and House customers get monthly analytics that show scans, review taps, engagement, and how many customers are being sent straight to Google.</p>
-        <p style="color:var(--text-dim);font-size:0.9rem;line-height:1.75;margin-bottom:1.5rem;">See which tables drive the most engagement, which links customers actually use, and how review taps translate into real ranking progress.</p>
+        <p style="color:var(--text-dim);font-size:0.9rem;line-height:1.75;margin-bottom:1.5rem;">See which tables drive the most engagement, which links customers actually use, and how review taps translate into <span class="analytics-highlight">real ranking progress</span>.</p>
         <p style="color:var(--text-dim);font-size:0.9rem;line-height:1.75;">Your monthly report combines scans, review growth, and local ranking so you can see the full picture — not just a guess.</p>
       </div>
     </div>
@@ -606,20 +610,24 @@ section { padding: 7rem 0; }
     <h2 class="section-title">Simple pricing for a complete local ranking system</h2>
     <p class="section-desc">Everything is included — hub page, branded pads, install, review tracking, scorecards, WhatsApp updates and local exclusivity — for one simple monthly fee.</p>
     <div class="why-cards" style="margin-bottom:2rem; display:block;">
-      <div class="why-card" style="padding:1.75rem;">
-        <h3 style="margin-bottom:1rem;">What most venues are still paying</h3>
+      <div class="why-card" style="padding:1.75rem; background:rgba(255,77,79,0.06); border-color:rgba(255,77,79,0.14);">
+        <h3 style="margin-bottom:1rem; color:var(--red);">What most venues are still paying</h3>
         <ul style="list-style:none; padding:0; margin:0; color:var(--text-dim);">
           <li style="margin-bottom:0.75rem;"><del>£450 setup</del> + <del>£120/month review platform</del></li>
           <li style="margin-bottom:0.75rem;"><del>£220/month local SEO</del> + <del>£180/month social posting</del></li>
           <li style="margin-bottom:0.75rem;"><del>£70/month analytics</del> + <del>£85/month campaign support</del></li>
-          <li style="font-weight:700; margin-top:0.75rem;">Total: £940+ in the first month, then £495+ ongoing</li>
+          <li style="font-weight:700; margin-top:0.75rem; color:var(--text);">Total: £940+ in the first month, then £495+ ongoing</li>
         </ul>
       </div>
-      <div class="why-card" style="padding:1.75rem; margin-top:1rem; background:rgba(0,204,111,0.05); border-color:rgba(0,204,111,0.12);">
-        <h3 style="margin-bottom:1rem;">Voucht price</h3>
-        <p style="margin:0 0 0.75rem; font-weight:700; font-size:1rem;">From £29/month</p>
+      <div class="why-card" style="padding:1.75rem; margin-top:1rem; background:rgba(0,204,111,0.08); border-color:rgba(0,204,111,0.18);">
+        <h3 style="margin-bottom:1rem; color:var(--text);">Voucht price</h3>
+        <p style="margin:0 0 0.75rem; font-weight:700; font-size:1rem; color:var(--green);">From £29/month</p>
         <p style="margin:0; color:var(--text);">A fully managed local review system with exclusive local protection, scorecards, branded pads and updates included.</p>
       </div>
+    </div>
+    <div class="price-highlight" style="background: rgba(0,204,111,0.08); border: 1px solid rgba(0,204,111,0.16); border-radius: 18px; padding: 1.25rem 1.5rem; margin-bottom: 2rem; display: inline-flex; align-items: baseline; gap: 1rem;">
+      <span style="font-weight:700; color:var(--text);">Real local stack value:</span>
+      <span style="font-size:0.95rem; color:var(--green);">£940+ first month → Voucht from £29/month</span>
     </div>
     <div class="pricing-grid">
       <div class="price-card">
