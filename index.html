@@ -27,6 +27,22 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Satoshi:wght@400;500;600;700&display=swap" rel="stylesheet">
+<meta name="keywords" content="local SEO, Google reviews, review system, small business, cafés, salons, pubs, local search, review growth">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Voucht",
+  "url": "https://voucht.co.uk",
+  "logo": "https://voucht.co.uk/Voucht.png",
+  "sameAs": ["https://www.instagram.com/voucht.uk/"],
+  "contactPoint": [{
+    "@type": "ContactPoint",
+    "contactType": "customer service",
+    "email": "hello@voucht.co.uk"
+  }]
+}
+</script>
 <style>
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -41,6 +57,9 @@
   --green: #00CC6F;
   --green-dim: rgba(0,204,111,0.12);
   --green-glow: rgba(0,204,111,0.25);
+  --red: #FF4D4F;
+  --red-dim: rgba(255,77,79,0.08);
+  --red-glow: rgba(255,77,79,0.18);
   --border: rgba(255,255,255,0.06);
   --border-hover: rgba(255,255,255,0.12);
   --radius: 14px;
@@ -52,7 +71,7 @@
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; width:100%; overflow-x:hidden; }
 
 body {
   background: var(--bg);
@@ -74,6 +93,27 @@ body::after {
 
 ::selection { background: var(--green); color: var(--bg); }
 a { color: inherit; text-decoration: none; }
+
+/* Ensure media and svgs never force horizontal scroll on small devices */
+img, picture, video, iframe, svg { max-width: 100%; height: auto; display: block; }
+
+/* Proof list highlights (green) */
+.proof-list strong { color: var(--green); background: var(--green-dim); padding: 2px 6px; border-radius: 6px; font-weight:700; }
+
+/* Problem section uses subtle red accents (icons + headings) */
+#problem .why-card-icon { background: var(--red-dim); color: var(--red); }
+#problem .why-card h3 { color: var(--red); }
+
+/* Make the 'most popular' price card pop more visually */
+.price-card.pop { border-color: var(--green); background: linear-gradient(180deg, rgba(0,0,0,0.02), var(--bg-card)); transform: translateY(-6px); box-shadow: 0 18px 48px rgba(0,0,0,0.6), 0 6px 24px var(--green-glow); }
+.price-card.pop .price-amt { color: var(--green); text-shadow: 0 2px 8px rgba(0,204,111,0.08); }
+
+/* Small-screen nav tweaks: keep CTA visible and compact */
+.nav { transition: height 0.18s ease, padding 0.18s ease, background 0.18s ease; }
+.nav.shrink { padding: 0 1rem; height: 56px; }
+
+/* CTA subtle mobile styling when labelled 'Inquire now' */
+.nav-cta.inquire { background: transparent; color: var(--green) !important; border: 1px solid var(--green); box-shadow: none; }
 
 /* ── NAV ── */
 .nav {
@@ -710,6 +750,7 @@ section { padding: 7rem 0; }
 </footer>
 
 <script>
+// FAQ expand/collapse
 document.querySelectorAll('.faq-q').forEach(btn => {
   btn.addEventListener('click', () => {
     const faq = btn.parentElement;
@@ -718,6 +759,8 @@ document.querySelectorAll('.faq-q').forEach(btn => {
     if (!wasOpen) faq.classList.add('open');
   });
 });
+
+// Smooth anchor scrolling
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {
     e.preventDefault();
@@ -725,6 +768,38 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
 });
+
+// Mobile CTA conversion: change "Get started" to "Inquire now" on small screens
+(function() {
+  const cta = document.querySelector('.nav-cta');
+  const nav = document.querySelector('.nav');
+  if (!cta || !nav) return;
+
+  function updateCTA() {
+    const isSmall = window.innerWidth <= 640;
+    if (isSmall) {
+      cta.dataset.origText = cta.textContent.trim();
+      cta.textContent = 'Inquire now';
+      cta.classList.add('inquire');
+      cta.href = 'mailto:hello@voucht.co.uk?subject=Inquiry%20about%20Voucht';
+    } else {
+      if (cta.dataset.origText) cta.textContent = cta.dataset.origText;
+      cta.classList.remove('inquire');
+      cta.href = 'mailto:hello@voucht.co.uk';
+    }
+  }
+
+  // Shrink nav when scrolling a little to keep focus on content
+  let lastScroll = 0;
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY || window.pageYOffset;
+    if (y > 40) nav.classList.add('shrink'); else nav.classList.remove('shrink');
+    lastScroll = y;
+  }, { passive: true });
+
+  window.addEventListener('resize', updateCTA);
+  updateCTA();
+})();
 </script>
 
 </body>
