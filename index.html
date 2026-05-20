@@ -150,7 +150,7 @@ img, picture, video, iframe, svg { max-width: 100%; height: auto; display: block
 @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
 
 /* ── HERO: near-me cycling (rotating words) ── */
-.near-me { margin-top: 1rem; font-size: 1rem; color: var(--text-dim); display:flex; gap:0.6rem; align-items:center; justify-content:center; font-weight:500; letter-spacing:0.3px; }
+.near-me { margin-top: 1rem; margin-bottom: 50px; font-size: 1rem; color: var(--text-dim); display:flex; gap:0.6rem; align-items:center; justify-content:center; font-weight:500; letter-spacing:0.3px; }
 .near-me .pulse-dot { width:8px; height:8px; background:var(--green); border-radius:50%; box-shadow:0 6px 18px var(--green-glow); flex-shrink:0; }
 .near-me #searchCycle { color: var(--green); font-weight:700; letter-spacing:0.2px; display:inline-block; position:relative; min-width:140px; text-align:left; }
 @keyframes slideInOut { 0% { opacity:0; transform:translateY(12px) scale(0.95); } 8% { opacity:1; transform:translateY(0) scale(1); } 92% { opacity:1; transform:translateY(0) scale(1); } 100% { opacity:0; transform:translateY(-12px) scale(0.95); } }
@@ -268,7 +268,6 @@ section { padding: 7rem 0; overflow-x: hidden; }
   .scorecard-layout, .preview-layout, .why-layout { grid-template-columns: 1fr; gap: 2.5rem; }
   .why-cards { grid-template-columns: 1fr 1fr; }
   .stats-grid { grid-template-columns: repeat(2, 1fr); }
-  .an-stats { grid-template-columns: repeat(3, 1fr); }
 }
 
 @media (max-width: 640px) {
@@ -510,13 +509,13 @@ section { padding: 7rem 0; overflow-x: hidden; }
   </div>
 </section>
 
-<!-- PRICING -->
-<section class="pricing-section" id="pricing">
+<!-- COMPARISON -->
+<section class="why-section">
   <div class="wrap">
     <p class="label">Pricing</p>
     <h2 class="section-title">Less than a bag of beans. More than an agency.</h2>
     <p class="section-desc">Everything is included — hub page, branded pads, install, weekly snapshots, review tracking and local exclusivity — for one simple monthly fee. No setup costs. Cancel anytime.</p>
-    <div class="why-cards" style="margin-bottom:2.5rem; display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
+    <div class="why-cards" style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
       <div class="why-card" style="padding:1.75rem; background:rgba(255,77,79,0.06); border-color:rgba(255,77,79,0.14);">
         <h3 style="margin-bottom:1rem; color:var(--red);">What a local agency charges</h3>
         <ul style="list-style:none; padding:0; margin:0; color:var(--text-dim); font-size:0.9rem;">
@@ -532,7 +531,16 @@ section { padding: 7rem 0; overflow-x: hidden; }
         <p style="margin:0; color:var(--text-dim); font-size:0.88rem; line-height:1.6;">A fully managed local review system. Pads, hub page, weekly snapshots, and local exclusivity — done for you.</p>
       </div>
     </div>
-    <div class="pricing-grid" style="grid-template-columns: repeat(2,1fr); max-width:740px;">
+  </div>
+</section>
+
+<!-- PRICING PLANS -->
+<section class="pricing-section" id="pricing">
+  <div class="wrap">
+    <p class="label">Choose your plan</p>
+    <h2 class="section-title">Simple, transparent plans</h2>
+    <p class="section-desc">No setup fees, no long contracts. Cancel with 30 days' notice. First month free for founding businesses.</p>
+    <div class="pricing-grid" style="grid-template-columns: repeat(2,1fr); max-width:740px; margin: 0 auto;">
       <div class="price-card">
         <p class="price-tier">Pioneer</p>
         <p class="price-amt">£39</p>
@@ -723,7 +731,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
 
 // Hero: "near me" search cycling (rotating words)
 (function(){
-  const phrases = ['coffee near me','barber near me','restaurant near me','vegan near me','haircut near me','pub near me'];
+  const phrases = ['Cafe near me','Barber near me','Restaurant near me','Nail salon near me','Pub near me','Bakery near me'];
   const el = document.getElementById('searchCycle');
   if (!el) return;
   let i = 0;
