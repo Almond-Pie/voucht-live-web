@@ -149,6 +149,13 @@ img, picture, video, iframe, svg { max-width: 100%; height: auto; display: block
 .hero-note { margin-top: 2rem; font-size: 0.78rem; color: var(--text-faint); position: relative; z-index: 1; animation: fadeUp 0.7s var(--ease) 0.32s both; }
 @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
 
+/* ── HERO: near-me cycling (rotating words) ── */
+.near-me { margin-top: 1rem; font-size: 1rem; color: var(--text-dim); display:flex; gap:0.6rem; align-items:center; justify-content:center; font-weight:500; letter-spacing:0.3px; }
+.near-me .pulse-dot { width:8px; height:8px; background:var(--green); border-radius:50%; box-shadow:0 6px 18px var(--green-glow); flex-shrink:0; }
+.near-me #searchCycle { color: var(--green); font-weight:700; letter-spacing:0.2px; display:inline-block; position:relative; min-width:140px; text-align:left; }
+@keyframes slideInOut { 0% { opacity:0; transform:translateY(12px) scale(0.95); } 8% { opacity:1; transform:translateY(0) scale(1); } 92% { opacity:1; transform:translateY(0) scale(1); } 100% { opacity:0; transform:translateY(-12px) scale(0.95); } }
+.near-me #searchCycle.cycle { animation: slideInOut 2.4s cubic-bezier(0.34, 1.56, 0.64, 1) infinite; }
+
 /* ── BUTTONS ── */
 .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.85rem 1.8rem; font-family: var(--font-body); font-weight: 600; font-size: 0.9rem; border-radius: 100px; border: none; cursor: pointer; transition: all 0.3s var(--ease); text-decoration: none; }
 .btn-g { background: var(--green); color: var(--bg); }
@@ -175,50 +182,13 @@ section { padding: 7rem 0; overflow-x: hidden; }
 .why-card h3 { font-size: 0.92rem; font-weight: 600; margin-bottom: 0.4rem; line-height: 1.3; }
 .why-card p { font-size: 0.82rem; color: var(--text-dim); line-height: 1.65; }
 
-/* ── STEPS ── */
-.steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
-.step-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 2.25rem 1.75rem; transition: all 0.4s var(--ease); position: relative; overflow: hidden; }
-.step-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--green), transparent); opacity: 0; transition: opacity 0.4s var(--ease); }
-.step-card:hover { background: var(--bg-card-hover); border-color: rgba(0,204,111,0.15); transform: translateY(-4px); }
-.step-card:hover::before { opacity: 1; }
-.step-num { display: inline-flex; align-items: center; justify-content: center; width: 38px; height: 38px; background: var(--green-dim); color: var(--green); font-weight: 700; font-size: 0.85rem; border-radius: 10px; margin-bottom: 1.5rem; }
-.step-card h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.65rem; line-height: 1.3; }
-.step-card p { color: var(--text-dim); font-size: 0.9rem; line-height: 1.7; }
 
 /* ── HUB PAGE PREVIEW ── */
 .preview-section { border-top: 1px solid var(--border); }
 .preview-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
 .phone-frame { background: var(--bg-card); border: 1px solid var(--border); border-radius: 32px; padding: 12px; max-width: 320px; margin: 0 auto; box-shadow: 0 20px 60px rgba(0,0,0,0.4); }
 .phone-demo-img { display: block; width: 100%; height: auto; border-radius: 24px; }
-.phone-notch { background: var(--bg-card); border-radius: 24px 24px 0 0; height: 20px; display: flex; justify-content: center; align-items: center; }
-.phone-notch-pill { width: 50px; height: 5px; background: rgba(255,255,255,0.08); border-radius: 3px; }
-.phone-screen { background: #FAFAF5; border-radius: 20px; overflow: hidden; }
-.hub-header { background: #1B5E20; padding: 24px 16px 20px; text-align: center; }
-.hub-logo { width: 50px; height: 50px; background: #FAFAF5; border-radius: 50%; margin: 0 auto 8px; display: flex; align-items: center; justify-content: center; font-size: 22px; font-weight: 600; color: #1B5E20; font-family: var(--font-body); }
-.hub-name { font-size: 15px; font-weight: 600; color: #FAFAF5; font-family: var(--font-body); margin-bottom: 2px; }
-.hub-tag { font-size: 10px; color: #A5D6A7; font-family: var(--font-body); }
-.hub-links { padding: 16px 12px 12px; }
-.hub-btn { display: flex; align-items: center; gap: 10px; padding: 11px 12px; border-radius: 10px; margin-bottom: 6px; font-family: var(--font-body); font-size: 13px; }
-.hub-btn-review { background: #1B5E20; color: #FAFAF5; font-weight: 600; }
-.hub-btn-link { background: #FAFAF5; border: 0.5px solid #E0DDD4; color: #444; }
-.hub-btn-arrow { margin-left: auto; color: #BBB; font-size: 11px; }
-.hub-btn-icon { width: 16px; text-align: center; color: #888; font-size: 14px; }
-.hub-whats-on { background: #F0EDE4; border-radius: 10px; padding: 10px 12px; margin: 8px 12px 12px; }
-.hub-whats-on-label { font-size: 9px; font-weight: 700; color: #888; text-transform: uppercase; letter-spacing: 0.5px; font-family: var(--font-body); margin-bottom: 4px; }
-.hub-whats-on-text { font-size: 11px; color: #555; font-family: var(--font-body); line-height: 1.5; }
-.hub-footer { text-align: center; padding: 10px 12px; border-top: 0.5px solid #E0DDD4; }
-.hub-footer span { font-size: 8px; color: #BBB; font-family: var(--font-body); }
-.hub-footer strong { font-weight: 600; color: #999; }
-.phone-home { background: var(--bg-card); border-radius: 0 0 24px 24px; height: 14px; }
 
-/* ── FEATURES ── */
-.features-section { border-top: 1px solid var(--border); }
-.features-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
-.feature { display: flex; gap: 1.25rem; padding: 1.75rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); transition: all 0.3s var(--ease); }
-.feature:hover { border-color: var(--border-hover); background: var(--bg-card-hover); }
-.feature-icon { width: 40px; height: 40px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; background: var(--green-dim); border-radius: 10px; color: var(--green); }
-.feature h3 { font-size: 0.98rem; font-weight: 600; margin-bottom: 0.35rem; }
-.feature p { color: var(--text-dim); font-size: 0.85rem; line-height: 1.65; }
 
 /* ── SCORECARD ── */
 .scorecard-section { border-top: 1px solid var(--border); overflow: hidden; }
@@ -242,42 +212,6 @@ section { padding: 7rem 0; overflow-x: hidden; }
 .sc-bar.you .name { color: var(--green); font-weight: 600; }
 .sc-bar.you .count { color: var(--green); }
 
-/* ── ANALYTICS PREVIEW ── */
-.analytics-section { border-top: 1px solid var(--border); }
-.analytics-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
-.analytics-mock { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 2rem; position: relative; }
-.analytics-mock::before { content: ''; position: absolute; top: -1px; left: 2rem; right: 2rem; height: 2px; background: linear-gradient(90deg, transparent, var(--green), transparent); }
-.an-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--border); }
-.an-header h4 { font-size: 0.85rem; font-weight: 600; }
-.an-header span { font-size: 0.72rem; color: var(--text-faint); }
-.an-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; margin-bottom: 1.5rem; }
-.an-stat { background: var(--bg); border-radius: 10px; padding: 1rem 0.75rem; text-align: center; }
-.an-stat .val { font-family: var(--font-display); font-size: 1.8rem; color: var(--green); line-height: 1; margin-bottom: 0.25rem; }
-.an-stat .desc { font-size: 0.68rem; color: var(--text-faint); line-height: 1.3; }
-.an-chart { display: flex; align-items: flex-end; gap: 6px; height: 100px; padding: 0.75rem 0; }
-.an-chart-bar { flex: 1; background: var(--green-dim); border-radius: 4px 4px 0 0; position: relative; transition: background 0.2s; min-height: 8px; }
-.an-chart-bar:hover { background: var(--green); }
-.an-chart-bar.active { background: var(--green); }
-.an-chart-labels { display: flex; gap: 6px; }
-.an-chart-labels span { flex: 1; text-align: center; font-size: 0.6rem; color: var(--text-faint); }
-.an-table-section { margin-top: 1.25rem; padding-top: 1rem; border-top: 1px solid var(--border); }
-.an-table-title { font-size: 0.72rem; font-weight: 600; color: var(--text-faint); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.75rem; }
-.an-table-row { display: flex; justify-content: space-between; align-items: center; padding: 0.4rem 0; font-size: 0.78rem; }
-.an-table-row .link-name { color: var(--text-dim); }
-.an-table-row .link-count { color: var(--green); font-weight: 600; }
-.an-table-row .link-bar { flex: 1; margin: 0 0.75rem; height: 4px; background: var(--bg); border-radius: 2px; }
-.an-table-row .link-fill { height: 100%; background: var(--green-dim); border-radius: 2px; }
-.analytics-highlight { display: inline-block; color: var(--green); background: rgba(0,204,111,0.08); border-radius: 12px; padding: 0.45rem 0.9rem; font-weight: 700; }
-
-/* ── QR ADD-ONS ── */
-.addons-section { border-top: 1px solid var(--border); }
-.addons-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
-.addon-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 2rem 1.5rem; text-align: center; transition: all 0.4s var(--ease); }
-.addon-card:hover { border-color: rgba(0,204,111,0.15); transform: translateY(-4px); background: var(--bg-card-hover); }
-.addon-icon { width: 64px; height: 64px; background: var(--green-dim); border-radius: 16px; margin: 0 auto 1.25rem; display: flex; align-items: center; justify-content: center; color: var(--green); }
-.addon-card h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem; }
-.addon-card p { font-size: 0.85rem; color: var(--text-dim); line-height: 1.65; }
-.addon-tag { display: inline-block; margin-top: 1rem; padding: 0.3rem 0.75rem; background: var(--green-dim); color: var(--green); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.5px; border-radius: 100px; text-transform: uppercase; }
 
 /* ── PRICING ── */
 .pricing-section { border-top: 1px solid var(--border); }
@@ -330,9 +264,8 @@ section { padding: 7rem 0; overflow-x: hidden; }
 
 /* ── RESPONSIVE ── */
 @media (max-width: 900px) {
-  .steps-grid, .pricing-grid, .addons-grid { grid-template-columns: 1fr; max-width: 440px; margin: 0 auto; }
-  .features-grid { grid-template-columns: 1fr; }
-  .scorecard-layout, .preview-layout, .analytics-layout, .why-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+  .pricing-grid { grid-template-columns: 1fr; max-width: 440px; margin: 0 auto; }
+  .scorecard-layout, .preview-layout, .why-layout { grid-template-columns: 1fr; gap: 2.5rem; }
   .why-cards { grid-template-columns: 1fr 1fr; }
   .stats-grid { grid-template-columns: repeat(2, 1fr); }
   .an-stats { grid-template-columns: repeat(3, 1fr); }
@@ -379,9 +312,10 @@ section { padding: 7rem 0; overflow-x: hidden; }
 <section class="hero">
   <div class="hero-glow"></div>
   <div class="hero-grid"></div>
-  <div class="hero-badge"><span class="pulse"></span>17,350 UK shops forecast to close in 2025 — nearly 15,000 independents</div>
-  <h1>Turn every customer into the proof that gets you found on Google.</h1>
-  <p class="hero-sub">Voucht gives cafés, salons and pubs a working review system, local ranking data and fast setup — no marketing work required.</p>
+  <div class="hero-badge"><span class="pulse"></span>Over 17,000 UK shops closed last year — 84% were independents</div>
+  <h1>Turn every customer into the proof that fills your high street seats.</h1>
+  <p class="hero-sub">We help high street businesses — cafés, barbers, boutiques and pubs — get found, booked and recommended with one simple system.</p>
+  <div class="near-me" aria-hidden="true"><span class="pulse-dot"></span>People searching: <span id="searchCycle">coffee near me</span></div>
   <div class="hero-actions">
     <a href="mailto:hello@voucht.co.uk" class="btn btn-g">Get my free review scorecard</a>
     <a href="#pricing" class="btn btn-o">See pricing</a>
@@ -423,13 +357,14 @@ section { padding: 7rem 0; overflow-x: hidden; }
 <!-- PROOF SECTION -->
 <section class="why-section">
   <div class="wrap">
-    <p class="label">Proof that it works</p>
-    <h2 class="section-title">Review growth that changes your Google position</h2>
-    <p class="section-desc">This is not a marketing gimmick. Customers are leaving real reviews, and businesses using Voucht are moving into stronger local search positions.</p>
+    <p class="label">The numbers don't lie</p>
+    <h2 class="section-title">Reviews are the single biggest lever on your Google ranking</h2>
+    <p class="section-desc">This is not opinion. Every stat below is independently verified — and it explains exactly why the businesses climbing in your area are the ones with more reviews.</p>
     <ul class="proof-list" style="margin-top:2rem; list-style:none; padding:0;">
-      <li style="margin-bottom:1.25rem;"><strong>18 new reviews in 45 days</strong> — a café moved from 7th to 3rd in the Google local pack.</li>
-      <li style="margin-bottom:1.25rem;"><strong>126% more traffic in the top 3</strong> — businesses in the top three get more than twice the attention of the rest.</li>
-      <li style="margin-bottom:1.25rem;"><strong>5-9% more revenue from a one-star lift</strong> — better reviews mean more visibility, trust and bookings.</li>
+      <li style="margin-bottom:1.25rem;"><strong>97% of people read reviews</strong> before choosing a local business — every week you go without a system, you're invisible to nearly all of them. <em style="color:var(--text-faint);font-size:0.8rem;">(BrightLocal 2026)</em></li>
+      <li style="margin-bottom:1.25rem;"><strong>Top 3 on Google gets 126% more traffic</strong> than everyone below them — that's not a marginal edge, it's a different business. <em style="color:var(--text-faint);font-size:0.8rem;">(SocialPilot)</em></li>
+      <li style="margin-bottom:1.25rem;"><strong>One extra star means 5–9% more revenue</strong> — on a £30k/month venue, that's £1,500–£2,700 a month left on the table. <em style="color:var(--text-faint);font-size:0.8rem;">(Harvard Business School)</em></li>
+      <li style="margin-bottom:1.25rem;"><strong>The average top-ranked local business has 47 reviews.</strong> The average local business has 39. That gap is your opportunity. <em style="color:var(--text-faint);font-size:0.8rem;">(Trustmary / industry data)</em></li>
     </ul>
   </div>
 </section>
@@ -479,8 +414,8 @@ section { padding: 7rem 0; overflow-x: hidden; }
       </div>
       <div class="why-card">
         <div class="why-card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16"/><path d="M4 12h16"/><path d="M4 18h16"/></svg></div>
-        <h3>Monthly scorecard</h3>
-        <p>See where you rank, how many reviews you need, and what your next move should be.</p>
+        <h3>Weekly snapshots</h3>
+        <p>See where you rank, how many reviews you need, and what your next move should be — delivered as a weekly snapshot.</p>
       </div>
       <div class="why-card">
         <div class="why-card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 12h18"/><path d="M12 3v18"/></svg></div>
@@ -501,6 +436,25 @@ section { padding: 7rem 0; overflow-x: hidden; }
   </div>
 </section>
 
+<!-- HUB PAGE PREVIEW -->
+<section class="preview-section">
+  <div class="wrap">
+    <div class="preview-layout">
+      <div>
+        <p class="label">Custom hub page</p>
+        <h2 class="section-title">One scan, <em>everything</em> about you</h2>
+        <p class="section-desc" style="margin-bottom:1.5rem;">Your customers tap the pad and instantly see your Google reviews, Instagram, menu, website, events and booking links — all in one place, no app needed.</p>
+        <p style="color:var(--text-dim);font-size:0.9rem;line-height:1.75;">The hub page is hosted by Carrd and includes WhatsApp integration, real-time review tracking and local exclusivity. Built and live within 24 hours.</p>
+      </div>
+      <div style="display:flex; justify-content:center;">
+        <div class="phone-frame">
+          <img src="Carrd_Demo.png" alt="Hub page mockup showing Voucht hub with review button, Instagram, website and menu links" class="phone-demo-img" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- SCORECARD PREVIEW -->
 <section class="scorecard-section">
   <div class="wrap">
@@ -509,7 +463,7 @@ section { padding: 7rem 0; overflow-x: hidden; }
         <p class="label">Competitive intelligence</p>
         <h2 class="section-title">The moat most review tools don't offer</h2>
         <p class="section-desc" style="margin-bottom:1.5rem;">This is not just a hub page. It is a local competitive advantage: see who you are already beating, who is pulling ahead, and how many reviews you need to win your street.</p>
-        <p style="color:var(--text-dim);font-size:0.9rem;line-height:1.75;">Every month, Table and House customers get a position report, a review gap, and a clear plan to climb rankings. This is the intelligence that turns review growth into revenue growth.</p>
+        <p style="color:var(--text-dim);font-size:0.9rem;line-height:1.75;">Every week, Pioneer and Growth customers get a position snapshot, a review gap, and a clear plan to climb rankings. This is the intelligence that turns review growth into revenue growth.</p>
       </div>
       <div class="scorecard-mock">
         <div class="sc-header"><h4>Area Ranking — Local cafés</h4><span>May 2026</span></div>
@@ -529,53 +483,6 @@ section { padding: 7rem 0; overflow-x: hidden; }
   </div>
 </section>
 
-<!-- ANALYTICS DASHBOARD PREVIEW -->
-<section class="analytics-section">
-  <div class="wrap">
-    <div class="analytics-layout">
-      <div class="analytics-mock">
-        <div class="an-header"><h4>Scan analytics — proof that it works</h4><span>Last 30 days</span></div>
-        <div class="an-stats">
-          <div class="an-stat"><div class="val">312</div><div class="desc">Total scans</div></div>
-          <div class="an-stat"><div class="val">48</div><div class="desc">Review taps</div></div>
-          <div class="an-stat"><div class="val">92%</div><div class="desc">Direct review clicks</div></div>
-        </div>
-        <div class="an-chart">
-          <div class="an-chart-bar" style="height:35%"></div>
-          <div class="an-chart-bar" style="height:42%"></div>
-          <div class="an-chart-bar" style="height:38%"></div>
-          <div class="an-chart-bar" style="height:55%"></div>
-          <div class="an-chart-bar" style="height:48%"></div>
-          <div class="an-chart-bar" style="height:62%"></div>
-          <div class="an-chart-bar" style="height:70%"></div>
-          <div class="an-chart-bar" style="height:65%"></div>
-          <div class="an-chart-bar" style="height:78%"></div>
-          <div class="an-chart-bar" style="height:72%"></div>
-          <div class="an-chart-bar" style="height:85%"></div>
-          <div class="an-chart-bar active" style="height:92%"></div>
-        </div>
-        <div class="an-chart-labels">
-          <span>Jun</span><span>Jul</span><span>Aug</span><span>Sep</span><span>Oct</span><span>Nov</span><span>Dec</span><span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span>
-        </div>
-        <div class="an-table-section">
-          <div class="an-table-title">Link taps this month</div>
-          <div class="an-table-row"><span class="link-name">Google Reviews</span><div class="link-bar"><div class="link-fill" style="width:62%"></div></div><span class="link-count">48</span></div>
-          <div class="an-table-row"><span class="link-name">Instagram</span><div class="link-bar"><div class="link-fill" style="width:45%"></div></div><span class="link-count">35</span></div>
-          <div class="an-table-row"><span class="link-name">Menu</span><div class="link-bar"><div class="link-fill" style="width:85%"></div></div><span class="link-count">66</span></div>
-          <div class="an-table-row"><span class="link-name">Website</span><div class="link-bar"><div class="link-fill" style="width:28%"></div></div><span class="link-count">22</span></div>
-          <div class="an-table-row"><span class="link-name">Facebook</span><div class="link-bar"><div class="link-fill" style="width:15%"></div></div><span class="link-count">12</span></div>
-        </div>
-      </div>
-      <div>
-        <p class="label">Analytics dashboard</p>
-        <h2 class="section-title">Real data, <em>not assumptions</em></h2>
-        <p class="section-desc" style="margin-bottom:1.5rem;">Table and House customers get monthly analytics that show scans, review taps, engagement, and how many customers are being sent straight to Google.</p>
-        <p style="color:var(--text-dim);font-size:0.9rem;line-height:1.75;margin-bottom:1.5rem;">See which tables drive the most engagement, which links customers actually use, and how review taps translate into <span class="analytics-highlight">real ranking progress</span>.</p>
-        <p style="color:var(--text-dim);font-size:0.9rem;line-height:1.75;">Your monthly report combines scans, review growth, and local ranking so you can see the full picture — not just a guess.</p>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- GUARANTEE -->
 <section class="why-section">
@@ -590,12 +497,12 @@ section { padding: 7rem 0; overflow-x: hidden; }
         <p>We deliver a working hub page and a competitive scorecard before most agencies even send a proposal.</p>
       </div>
       <div class="why-card">
-        <div class="why-card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg></div>
+        <div class="why-card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
         <h3>Clear accountability</h3>
-        <p>We measure scans, review taps, and ranking progress so the results are visible every month.</p>
+        <p>We measure scans, review taps, and ranking progress so the results are visible every week.</p>
       </div>
       <div class="why-card">
-        <div class="why-card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg></div>
+        <div class="why-card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
         <h3>Risk removed</h3>
         <p>If you don't get 10 new Google reviews in 90 days, we refund the subscription fee.</p>
       </div>
@@ -607,70 +514,55 @@ section { padding: 7rem 0; overflow-x: hidden; }
 <section class="pricing-section" id="pricing">
   <div class="wrap">
     <p class="label">Pricing</p>
-    <h2 class="section-title">Simple pricing for a complete local ranking system</h2>
-    <p class="section-desc">Everything is included — hub page, branded pads, install, review tracking, scorecards, WhatsApp updates and local exclusivity — for one simple monthly fee.</p>
-    <div class="why-cards" style="margin-bottom:2rem; display:block;">
+    <h2 class="section-title">Less than a bag of beans. More than an agency.</h2>
+    <p class="section-desc">Everything is included — hub page, branded pads, install, weekly snapshots, review tracking and local exclusivity — for one simple monthly fee. No setup costs. Cancel anytime.</p>
+    <div class="why-cards" style="margin-bottom:2.5rem; display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
       <div class="why-card" style="padding:1.75rem; background:rgba(255,77,79,0.06); border-color:rgba(255,77,79,0.14);">
-        <h3 style="margin-bottom:1rem; color:var(--red);">What most venues are still paying</h3>
-        <ul style="list-style:none; padding:0; margin:0; color:var(--text-dim);">
-          <li style="margin-bottom:0.75rem;"><del>£450 setup</del> + <del>£120/month review platform</del></li>
-          <li style="margin-bottom:0.75rem;"><del>£220/month local SEO</del> + <del>£180/month social posting</del></li>
-          <li style="margin-bottom:0.75rem;"><del>£70/month analytics</del> + <del>£85/month campaign support</del></li>
-          <li style="font-weight:700; margin-top:0.75rem; color:var(--text);">Total: £940+ in the first month, then £495+ ongoing</li>
+        <h3 style="margin-bottom:1rem; color:var(--red);">What a local agency charges</h3>
+        <ul style="list-style:none; padding:0; margin:0; color:var(--text-dim); font-size:0.9rem;">
+          <li style="margin-bottom:0.65rem;"><strong style="color:var(--text);">Local SEO retainer:</strong> £300–£1,500/month</li>
+          <li style="margin-bottom:0.65rem;"><strong style="color:var(--text);">Core agency retainer:</strong> £1,250–£3,500/month</li>
+          <li style="margin-bottom:0.65rem;"><strong style="color:var(--text);">Social media management:</strong> £500–£2,000/month</li>
+          <li style="font-weight:700; margin-top:1rem; color:var(--text); font-size:0.95rem; border-top:1px solid var(--border); padding-top:0.75rem;">Total: £2,050–£7,000+/month</li>
         </ul>
       </div>
-      <div class="why-card" style="padding:1.75rem; margin-top:1rem; background:rgba(0,204,111,0.08); border-color:rgba(0,204,111,0.18);">
-        <h3 style="margin-bottom:1rem; color:var(--text);">Voucht price</h3>
-        <p style="margin:0 0 0.75rem; font-weight:700; font-size:1rem; color:var(--green);">From £29/month</p>
-        <p style="margin:0; color:var(--text);">A fully managed local review system with exclusive local protection, scorecards, branded pads and updates included.</p>
+      <div class="why-card" style="padding:1.75rem; background:rgba(0,204,111,0.08); border-color:rgba(0,204,111,0.18); display:flex; flex-direction:column; justify-content:center;">
+        <h3 style="margin-bottom:0.5rem; color:var(--text);">Voucht</h3>
+        <p style="margin:0 0 0.5rem; font-family:var(--font-display); font-size:2.2rem; color:var(--green); line-height:1;">From £39<span style="font-family:var(--font-body);font-size:0.9rem;color:var(--text-faint);">/month</span></p>
+        <p style="margin:0; color:var(--text-dim); font-size:0.88rem; line-height:1.6;">A fully managed local review system. Pads, hub page, weekly snapshots, and local exclusivity — done for you.</p>
       </div>
     </div>
-    <div class="price-highlight" style="background: rgba(0,204,111,0.08); border: 1px solid rgba(0,204,111,0.16); border-radius: 18px; padding: 1.25rem 1.5rem; margin-bottom: 2rem; display: inline-flex; align-items: baseline; gap: 1rem;">
-      <span style="font-weight:700; color:var(--text);">Real local stack value:</span>
-      <span style="font-size:0.95rem; color:var(--green);">£940+ first month → Voucht from £29/month</span>
-    </div>
-    <div class="pricing-grid">
+    <div class="pricing-grid" style="grid-template-columns: repeat(2,1fr); max-width:740px;">
       <div class="price-card">
-        <p class="price-tier">Counter</p>
-        <p class="price-amt">£29</p>
+        <p class="price-tier">Pioneer</p>
+        <p class="price-amt">£39</p>
         <p class="price-per">/month</p>
-        <p class="price-desc">For small venues getting started with reviews and visibility.</p>
+        <p class="price-desc">For venues getting started with reviews and visibility. Everything you need, nothing you don't.</p>
         <ul class="price-list">
-          <li><span class="ck"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></span>3 branded NFC/QR pads</li>
+          <li><span class="ck"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></span>5 branded NFC/QR pads</li>
           <li><span class="ck"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></span>Custom review hub page</li>
           <li><span class="ck"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></span>Socials, menu, reviews, events</li>
+          <li><span class="ck"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></span>Weekly ranking snapshot</li>
           <li><span class="ck"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></span>Updates via WhatsApp (48hrs)</li>
-          <li><span class="ck"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></span>Window & counter are best</li>
+          <li><span class="ck"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></span>Local category exclusivity</li>
         </ul>
         <a href="mailto:hello@voucht.co.uk" class="btn btn-o">Get started</a>
       </div>
       <div class="price-card pop">
-        <p class="price-tier">Table</p>
-        <p class="price-amt">£49</p>
+        <p class="price-tier">Growth</p>
+        <p class="price-amt">£69</p>
         <p class="price-per">/month</p>
-        <p class="price-desc">For businesses serious about climbing Google rankings.</p>
-        <ul class="price-list">
-          <li><span class="ck"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></span>6 branded NFC/QR pads</li>
-          <li><span class="ck"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></span>Everything in Counter</li>
-          <li><span class="ck"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></span>Monthly competitive scorecard</li>
-          <li><span class="ck"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></span>Review tap tracking</li>
-          <li><span class="ck"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></span>Same-day updates</li>
-        </ul>
-        <a href="mailto:hello@voucht.co.uk" class="btn btn-g">Get started</a>
-      </div>
-      <div class="price-card">
-        <p class="price-tier">House</p>
-        <p class="price-amt">£79</p>
-        <p class="price-per">/month</p>
-        <p class="price-desc">For multi-location owners scaling their presence.</p>
+        <p class="price-desc">For businesses serious about dominating their area on Google. Full intelligence, same-day service.</p>
         <ul class="price-list">
           <li><span class="ck"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></span>10 branded NFC/QR pads</li>
-          <li><span class="ck"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></span>Everything in Table</li>
-          <li><span class="ck"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></span>Multi-location management</li>
-          <li><span class="ck"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></span>20% off additional locations</li>
-          <li><span class="ck"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></span>Quarterly strategy session</li>
+          <li><span class="ck"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></span>Everything in Pioneer</li>
+          <li><span class="ck"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></span>Full competitor breakdown weekly</li>
+          <li><span class="ck"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></span>Review tap tracking</li>
+          <li><span class="ck"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></span>Same-day hub page updates</li>
+          <li><span class="ck"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></span>Branded QR stickers for packaging</li>
+          <li><span class="ck"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></span>Priority WhatsApp support</li>
         </ul>
-        <a href="mailto:hello@voucht.co.uk" class="btn btn-o">Get started</a>
+        <a href="mailto:hello@voucht.co.uk" class="btn btn-g">Get started</a>
       </div>
     </div>
   </div>
@@ -685,7 +577,7 @@ section { padding: 7rem 0; overflow-x: hidden; }
       <div class="stat"><p class="num">5-9%</p><p class="lbl">revenue lift from a one-star rating improvement</p></div>
       <div class="stat"><p class="num">47</p><p class="lbl">reviews is the average for top-ranked local businesses</p></div>
     </div>
-    <p style="color:var(--text-faint);font-size:0.85rem;margin-top:1rem;max-width:760px;">Verified statistics from BrightLocal, Google and market research.</p>
+    <p style="color:var(--text-faint);font-size:0.85rem;margin-top:1rem;max-width:760px;">Verified statistics from BrightLocal, Google Business Profiles and Voucht tap tracking.</p>
   </div>
 </section>
 
@@ -714,7 +606,7 @@ section { padding: 7rem 0; overflow-x: hidden; }
       </div>
       <div class="faq">
         <button class="faq-q">What's the competitive scorecard?<span class="arrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
-        <div class="faq-a"><p>A monthly email report available on Table and House plans. It shows your Google review count and rating, how many new reviews you gained, and exactly how you rank against every competitor in your immediate area. It's the intelligence that turns reviews into a strategy.</p></div>
+        <div class="faq-a"><p>A weekly snapshot sent via WhatsApp every Monday. It shows your Google review count and rating, how many new reviews you gained, and exactly how you rank against every competitor in your immediate area. Pioneer customers get their own ranking and review count. Growth customers get the full breakdown of every competitor on their street. It's the intelligence that turns reviews into a strategy.</p></div>
       </div>
       <div class="faq">
         <button class="faq-q">Is there a contract or setup fee?<span class="arrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
@@ -722,15 +614,35 @@ section { padding: 7rem 0; overflow-x: hidden; }
       </div>
       <div class="faq">
         <button class="faq-q">What about branded QR stickers?<span class="arrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
-        <div class="faq-a"><p>Table and House plans include print-ready branded QR stickers you can put on takeaway bags, receipts, coffee cups, and loyalty cards. All plans include window and counter displays. Every touchpoint links to your hub page.</p></div>
+        <div class="faq-a"><p>Growth plan includes print-ready branded QR stickers you can put on takeaway bags, receipts, coffee cups, and loyalty cards. All plans include window and counter displays. Every touchpoint links to your hub page.</p></div>
       </div>
       <div class="faq">
         <button class="faq-q">What happens if a pad gets damaged?<span class="arrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
-        <div class="faq-a"><p>Pads remain Voucht property. If one gets damaged, spilled on, or goes missing, let us know and we'll replace it. Table and House plans include replacement as part of the subscription.</p></div>
+        <div class="faq-a"><p>Pads remain Voucht property. If one gets damaged, spilled on, or goes missing, let us know and we'll replace it. Both Pioneer and Growth plans include pad replacement as part of the subscription.</p></div>
       </div>
       <div class="faq">
         <button class="faq-q">Do you collect my customers' personal data?<span class="arrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
         <div class="faq-a"><p>No. We count scans and which links get tapped — that's it. No names, no emails, no phone numbers, no device tracking, no cookies. Your customers' privacy is fully protected.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOUNDER NOTE -->
+<section class="why-section">
+  <div class="wrap">
+    <div style="max-width:640px;">
+      <p class="label">From the founder</p>
+      <h2 class="section-title">Built by someone who's been <em>behind the counter</em></h2>
+      <p style="color:var(--text-dim);font-size:1rem;line-height:1.85;margin-bottom:1.75rem;">I spent Several years in specialty coffee across London.</p>
+      <p style="color:var(--text-dim);font-size:1rem;line-height:1.85;margin-bottom:1.25rem;">I watched brilliant independent venues lose customers to places with weaker coffee and worse service, simply because they had more Google reviews.</p>
+      <p style="color:var(--text-dim);font-size:1rem;line-height:1.85;margin-bottom:1.75rem;">We built Voucht because the trust infrastructure those businesses needed didn't exist at a price they could justify. We’ve designed everything to be frictionless, from the automated competitor dashboards to the un-fakeable table pads. I back this platform personally. If you ever need support or want to talk strategy, you can reach me and the team directly.</p>
+      <div style="display:flex;align-items:center;gap:1rem;">
+        <div style="width:44px;height:44px;border-radius:50%;background:var(--green-dim);border:1px solid rgba(0,204,111,0.2);display:flex;align-items:center;justify-content:center;color:var(--green);font-weight:700;font-size:1rem;">J</div>
+        <div>
+          <p style="font-weight:600;font-size:0.9rem;margin:0;">Jelani Bryan</p>
+          <p style="color:var(--text-faint);font-size:0.78rem;margin:0;">Founder, Voucht — London SE15</p>
+        </div>
       </div>
     </div>
   </div>
@@ -807,6 +719,23 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
 
   window.addEventListener('resize', updateCTA);
   updateCTA();
+})();
+
+// Hero: "near me" search cycling (rotating words)
+(function(){
+  const phrases = ['coffee near me','barber near me','restaurant near me','vegan near me','haircut near me','pub near me'];
+  const el = document.getElementById('searchCycle');
+  if (!el) return;
+  let i = 0;
+  
+  // Start the animation
+  el.classList.add('cycle');
+  
+  // Cycle through phrases every 2.4s (matches animation duration)
+  setInterval(()=>{
+    i = (i+1) % phrases.length;
+    el.textContent = phrases[i];
+  }, 2400);
 })();
 </script>
 
